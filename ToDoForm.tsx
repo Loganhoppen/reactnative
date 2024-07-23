@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const ToDoForm = () => {
+const ToDoForm = ({ addTask }) => {
+  const [taskText, setTaskText] = useState('');
+
   return (
     <View style={styles.form}>
       <TextInput
         style={styles.input}
         placeholder="Add a new task..."
+        onChangeText={(text) => setTaskText(text)}
+        value={taskText}
       />
-      <TouchableOpacity style={styles.addButton}>
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={() => {
+          addTask(taskText);
+          setTaskText(''); // Clear the input field after adding the task
+        }}>
         <Text style={styles.addButtonText}>Add</Text>
       </TouchableOpacity>
     </View>

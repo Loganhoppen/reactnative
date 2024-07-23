@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import ToDoList from './ToDoList';
+import ToDoForm from './ToDoForm';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,6 +25,13 @@ const App = () => {
     'Walk dog'
   ]);
 
+  // Function to add a new task
+  const addTask = (taskText) => {
+    if (taskText.trim() !== '') {
+      setTasks([...tasks, taskText]);
+    }
+  };
+
   console.log("Tasks in App component:", tasks); // Debugging log
 
   return (
@@ -34,6 +42,7 @@ const App = () => {
       <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
         <View style={{ backgroundColor: isDarkMode ? Colors.black : Colors.white }}>
           <ToDoList tasks={tasks} />
+          <ToDoForm addTask={addTask} />
         </View>
       </ScrollView>
     </SafeAreaView>

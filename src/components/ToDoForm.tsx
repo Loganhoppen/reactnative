@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const ToDoForm = ({ addTask }) => {
+interface ToDoFormProps {
+  addTask: (task: string) => void;
+}
+
+const ToDoForm: React.FC<ToDoFormProps> = ({ addTask }) => {
   const [taskText, setTaskText] = useState('');
 
   return (

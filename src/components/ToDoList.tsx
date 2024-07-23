@@ -1,9 +1,11 @@
 import React from 'react';
 import { ScrollView, View, Text, Pressable, StyleSheet } from 'react-native';
 
-const ToDoList = ({ tasks }) => {
-  console.log("Tasks in ToDoList component:", tasks); // Debugging log
+interface ToDoListProps {
+  tasks: string[];
+}
 
+const ToDoList: React.FC<ToDoListProps> = ({ tasks }) => {
   return (
     <ScrollView>
       {tasks.map((task, index) => (
